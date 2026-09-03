@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'M AI</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:#020205;
+  color:white;
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+header{
+  padding:20px;
+  text-align:center;
+  border-bottom:1px solid #222;
+  font-size:24px;
+  font-weight:bold;
+  letter-spacing:4px;
+}
+
+#chat{
+  flex:1;
+  padding:20px;
+  max-width:800px;
+  width:100%;
+  margin:auto;
+  overflow-y:auto;
+}
+
+.message{
+  margin:15px 0;
+  padding:14px 16px;
+  border-radius:15px;
+  line-height:1.5;
+  max-width:85%;
+}
+
+.user{
+  background:#222;
+  margin-left:auto;
+}
+
+.ai{
+  background:#111;
+  border:1px solid #292929;
+  margin-right:auto;
+}
+
+.bottom{
+  padding:15px;
+  border-top:1px solid #222;
+  background:#020205;
+}
+
+.inputbox{
+  max-width:800px;
+  margin:auto;
+  display:flex;
+  gap:10px;
+}
+
+input{
+  flex:1;
+  padding:15px;
+  border-radius:25px;
+  border:1px solid #333;
+  background:#111;
+  color:white;
+  outline:none;
+}
+
+button{
+  border:none;
+  border-radius:25px;
+  padding:0 22px;
+  background:white;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:active{
+  transform:scale(.96);
+}
+</style>
+</head>
+
+<body>
+
+<header>I'M AI</header>
+
+<div id="chat">
+  <div class="message ai">
+    Hello 👋<br>
+    I'm your AI assistant.
+  </div>
+</div>
+
+<div class="bottom">
+  <div class="inputbox">
+    <input id="message" type="text" placeholder="Ask me anything..." />
+    <button onclick="sendMessage()">SEND</button>
+  </div>
+</div>
+
+<script>
+function sendMessage(){
+
+  const input = document.getElementById("message");
+  const chat = document.getElementById("chat");
+
+  const text = input.value.trim();
+
+  if(!text) return;
+
+  const userMessage = document.createElement("div");
+  userMessage.className = "message user";
+  userMessage.textContent = text;
+
+  chat.appendChild(userMessage);
+
+  input.value = "";
+
+  const aiMessage = document.createElement("div");
+  aiMessage.className = "message ai";
+  aiMessage.textContent =
+    "AI connection abhi setup nahi hui hai. Backend connect karne ke baad main real AI response dunga.";
+
+  chat.appendChild(aiMessage);
+
+  chat.scrollTop = chat.scrollHeight;
+}
+
+document.getElementById("message").addEventListener("keydown",function(e){
+  if(e.key === "Enter"){
+    sendMessage();
+  }
+});
+</script>
+
+</body>
+</html>
