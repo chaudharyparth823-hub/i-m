@@ -490,7 +490,7 @@ async function sendToIM() {
   input.value = "";
 
   chat.innerHTML +=
-    '<div id="im-loading" style="opacity:.6;">I\\'M AI is thinking...</div>';
+  "<div id=\"im-loading\" style=\"opacity:.6;\">I'M AI is thinking...</div>";  
 
   try {
     const response = await fetch(
@@ -511,7 +511,7 @@ async function sendToIM() {
     document.getElementById("im-loading")?.remove();
 
     chat.innerHTML +=
-      '<div style="margin-top:8px;"><b>I\\'M:</b> ' +
+      "<div style=\"margin-top:8px;\"><b>I'M:</b> " +
       (data.reply || data.error || "No response.") +
       '</div>';
 
